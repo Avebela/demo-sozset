@@ -65,7 +65,6 @@ class App extends React.Component {
               <Route path="/friends" element={<FriendsContainer />} />
             </Routes>
           </Suspense>
-          ;
         </div>
       </div>
     );
