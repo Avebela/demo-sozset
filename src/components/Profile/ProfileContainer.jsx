@@ -9,6 +9,7 @@ import {
   getUserProfile,
   getStatus,
   updateStatus,
+  savePhoto,
 } from "../../redux/profile-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
@@ -16,7 +17,7 @@ function ProfileContainer(props) {
   let { userId } = useParams();
   if (!userId) {
     // userId = props.autorizedUserId;
-    userId = 2;
+    userId = 30361;
     // if (!userId) {
     //   //  userId = props.history.push("/login");
     //   userId = props.router.navigate("/login");
@@ -36,9 +37,12 @@ function ProfileContainer(props) {
     <div>
       <Profile
         {...props}
+        isOwner={userId == 30361}
+        //   isOwner={30361}
         userProfile={props.userProfile}
         status={props.status}
         updateStatus={props.updateStatus}
+        savePhoto={props.savePhoto}
       />
     </div>
   );
@@ -66,7 +70,12 @@ let mapStateToProps = (state) => {
 // );
 
 export default compose(
-  connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),
+  connect(mapStateToProps, {
+    getUserProfile,
+    getStatus,
+    updateStatus,
+    savePhoto,
+  }),
   withRouter,
   withAuthRedirect
 )(ProfileContainer);

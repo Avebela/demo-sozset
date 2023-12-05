@@ -39,7 +39,16 @@ export const profileAPI = {
     return instance.get(`profile/status/` + userId);
   },
   updateStatus(status) {
-    return instance.put("profile/status", { status: status });
+    return instance.put(`profile/status`, { status: status });
+  },
+  savePhoto(photoFile) {
+    const formData = new FormData();
+    formData.append("image", photoFile);
+    return instance.put(`profile/photo`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   },
 };
 
@@ -71,3 +80,12 @@ export const headerAPI = {
 // .then((response) => {
 //   return setUserProfile(response.data);
 // })
+
+// {headers: {'Content-type': 'multipart/form-data'}}
+// В конечном итоге будет выглядеть так:
+// savePhoto(file) {
+//         const formData = new FormData();
+//         formData.append("image", file)
+//         return instance
+//             .put(`profile/photo/`, formData);
+//     }

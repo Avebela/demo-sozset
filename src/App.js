@@ -17,6 +17,7 @@ import withRouter from "./WithRouter";
 import Preloader from "./components/Commen/Preloader/Preloader";
 import store from "./redux/redux-store";
 import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
 //import DialogsContainer from "./components/Dialogs/DialogsContainer";
@@ -83,6 +84,7 @@ let AppContainer = compose(
 const SamuraiJSApp = () => {
   return (
     <BrowserRouter>
+      {/* <BrowserRouter basename={process.env.PUBLIC_URL}> */}
       <Provider store={store}>
         <AppContainer
         // store={store}
