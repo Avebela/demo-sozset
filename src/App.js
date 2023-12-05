@@ -83,7 +83,7 @@ let AppContainer = compose(
 
 const SamuraiJSApp = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       {/* <BrowserRouter basename={process.env.PUBLIC_URL}> */}
       <Provider store={store}>
         <AppContainer
@@ -96,7 +96,7 @@ const SamuraiJSApp = () => {
         // onMessageChange={store.onMessageChange.bind(store)}
         />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 export default SamuraiJSApp;
