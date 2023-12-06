@@ -108,10 +108,12 @@ export const getStatus = (userId) => async (dispatch) => {
   dispatch(setStatus(response.data));
 };
 export const updateStatus = (status) => async (dispatch) => {
-  const response = await profileAPI.updateStatus(status);
-  if (response.data.resultCode === 0) {
-    dispatch(setStatus(status));
-  }
+  try {
+    const response = await profileAPI.updateStatus(status);
+    if (response.data.resultCode === 0) {
+      dispatch(setStatus(status));
+    }
+  } catch (error) {}
 };
 
 export const savePhoto = (file) => async (dispatch) => {
@@ -122,10 +124,11 @@ export const savePhoto = (file) => async (dispatch) => {
 };
 
 export const saveProfile = (profile) => async (dispatch, getState) => {
-  //const userId = getState().auth.userId;
+  const userId = getState().auth.userId;
   const response = await profileAPI.saveProfile(profile);
   if (response.data.resultCode === 0) {
-    dispatch(getUserProfile(30361));
+    // dispatch(getUserProfile(30361));
+    dispatch(getUserProfile(userId));
   } else {
     dispatch(stopSubmit("edit-profile", { _error: response.data.messages[0] }));
     // dispatch(stopSubmit("edit-profile", {"contacts": {"facebook": response.data.messages[0] }}));

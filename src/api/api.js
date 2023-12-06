@@ -52,7 +52,7 @@ export const profileAPI = {
   },
 
   saveProfile(profile) {
-    return instance.put(`profile`, profile );
+    return instance.put(`profile`, profile);
   },
 };
 
@@ -62,11 +62,22 @@ export const headerAPI = {
       return response.data;
     });
   },
-  getLogin(email, password, rememberMe = false) {
-    return instance.post(`auth/login`, { email, password, rememberMe });
+  getLogin(email, password, rememberMe = false, captcha = null) {
+    return instance.post(`auth/login`, {
+      email,
+      password,
+      rememberMe,
+      captcha,
+    });
   },
   getLogout() {
     return instance.delete(`auth/login`);
+  },
+};
+
+export const securityAPI = {
+  getCaptchaUrl() {
+    return instance.get(`security/get-captcha-url`);
   },
 };
 // export const unFollowAPI = {

@@ -17,12 +17,12 @@ import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 function ProfileContainer(props) {
   let { userId } = useParams();
   if (!userId) {
-    // userId = props.autorizedUserId;
-    userId = 30361;
-    //   if (!userId) {
-    //  userId = props.history.push("/login");
-    //  userId = props.router.navigate("/login");
-    //  }
+    userId = props.autorizedUserId;
+    // userId = 30361;
+    if (!userId) {
+      userId = props.history.push("/login");
+      //  userId = props.router.navigate("/login");
+    }
   }
 
   useEffect(() => {
@@ -38,7 +38,8 @@ function ProfileContainer(props) {
     <div>
       <Profile
         {...props}
-        isOwner={userId == 30361}
+        isOwner={userId == props.autorizedUserId}
+        // isOwner={props.match.params.userId}   isOwner={userId == 30361}
         userProfile={props.userProfile}
         status={props.status}
         updateStatus={props.updateStatus}
