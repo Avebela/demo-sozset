@@ -40,8 +40,8 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className={s.item}>
-        <NavLink to="/settings" className={LinkActive}>
-          Settings
+        <NavLink to="/type" className={LinkActive}>
+          Type
         </NavLink>
       </div>
       <div className={s.item}>

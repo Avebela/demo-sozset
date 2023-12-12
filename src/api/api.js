@@ -9,6 +9,10 @@ const instance = axios.create({
   },
 });
 
+const instance2 = axios.create({
+  baseURL: "http://localhost:5000/api/",
+});
+
 export const usersAPI = {
   getUsers(currentPage = 1, pageSize = 10) {
     return (
@@ -54,6 +58,31 @@ export const profileAPI = {
   saveProfile(profile) {
     return instance.put(`profile`, profile);
   },
+};
+
+export const typeAPI = {
+  getType() {
+    // return instance2.get(`type`);
+    return (
+      //  instance
+      //   .get(`users`)
+      instance2
+        .get(`type`)
+        // аксиос вернет промис
+        .then((response) => {
+          return response.data;
+        })
+    );
+  },
+  typeInsert(type) {
+    return instance2.post(`type`, type);
+  },
+  // typeDelete() {
+  //   return instance.delete(`type`);
+  // },
+  // typeUpdate(type) {
+  //   return instance.put(`type`, type);
+  // },
 };
 
 export const headerAPI = {
