@@ -5,7 +5,7 @@ import Type from "./Type";
 import withRouter from "../../WithRouter";
 
 import { useParams } from "react-router-dom";
-import { getType, insertType } from "../../redux/type-reducer";
+import { getType, insertType, updateType } from "../../redux/type-reducer";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 function TypeContainer(props) {
@@ -15,7 +15,12 @@ function TypeContainer(props) {
 
   return (
     <div>
-      <Type {...props} type={props.type} insertType={props.insertType} />
+      <Type
+        {...props}
+        type={props.type}
+        insertType={props.insertType}
+        updateType={props.updateType}
+      />
     </div>
   );
 }
@@ -29,7 +34,7 @@ let mapStateToProps = (state) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { getType, insertType }),
+  connect(mapStateToProps, { getType, insertType, updateType }),
   withRouter,
   withAuthRedirect
 )(TypeContainer);

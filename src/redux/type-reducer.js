@@ -3,6 +3,7 @@ import { typeAPI } from "../api/api";
 
 const SET_TYPE = "SET_TYPE";
 const SET_TYPE_INSERT = "SET_TYPE_INSERT";
+const SET_TYPE_UPDATE = "SET_TYPE_UPDATE";
 
 let initialState = {
   // typeNew: [1, 2, 3],
@@ -36,6 +37,14 @@ const typeReducer = (state = initialState, action) => {
       };
     }
 
+    case SET_TYPE_UPDATE: {
+      return {
+        ...state,
+        // types: action.types,
+        types: { ...state.types, typeNew: action.typeNew },
+      };
+    }
+
     default:
       return state;
   }
@@ -51,6 +60,11 @@ export const setTypeInsert = (type) => ({
   typeNew: type,
 });
 
+export const setTypeUpdate = (type) => ({
+  type: SET_TYPE_UPDATE,
+  typeNew: type,
+});
+
 export const getType = () => {
   return async (dispatch) => {
     const data = await typeAPI.getType();
@@ -63,6 +77,22 @@ export const insertType = (type) => {
   return async (dispatch) => {
     try {
       const data = await typeAPI.typeInsert(type);
+
+      //  dispatch(setTypeInsert(data));
+      dispatch(getType());
+    } catch (e) {
+      console.log(e);
+      // dispatch(stopSubmit("edit-type", { _error: e }));
+      // dispatch(stopSubmit("edit-profile", {"contacts": {"facebook": response.data.messages[0] }}));
+      //return Promise.reject(e);
+    }
+  };
+};
+
+export const updateType = (type) => {
+  return async (dispatch) => {
+    try {
+      const data = await typeAPI.typeUpdate(type);
 
       //  dispatch(setTypeInsert(data));
       dispatch(getType());

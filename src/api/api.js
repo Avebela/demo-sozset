@@ -77,12 +77,12 @@ export const typeAPI = {
   typeInsert(type) {
     return instance2.post(`type`, type);
   },
-  // typeDelete() {
-  //   return instance.delete(`type`);
-  // },
-  // typeUpdate(type) {
-  //   return instance.put(`type`, type);
-  // },
+  typeUpdate(type) {
+    return instance2.put(`type`, type);
+  },
+  typeDelete() {
+    return instance2.delete(`type`);
+  },
 };
 
 export const headerAPI = {
