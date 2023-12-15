@@ -49,6 +49,7 @@ export const createField = (
   component,
   props = {},
   text = ""
+  //value = ""
 ) => (
   <div>
     <Field
@@ -56,6 +57,7 @@ export const createField = (
       name={name}
       validate={validators}
       component={component}
+      //  value={value}
       {...props}
     />
     {text}

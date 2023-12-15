@@ -7,6 +7,8 @@ import UsersContainer from "./components/Users/UsersContainer";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import TypeContainer from "./components/Type/TypeContainer";
+import TypeEdit from "./components/Type/TypeEdit";
+
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import { Route, Routes } from "react-router-dom";
 
@@ -58,12 +60,14 @@ class App extends React.Component {
             <Route path="/profile/:userId?" element={<ProfileContainer />} />
             <Route path="/" element={<Navigate to="/profile" />} />
             <Route path="/login" element={<Login />} />
-
             <Route path="/dialogs" element={<DialogsContainer />} />
             <Route path="/users" element={<UsersContainer />} />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/type" element={<TypeContainer />} />
+            // <Route path="/type/:id?" element={<TypeEdit />} />
+            {/* <Route path="`/type/:id?name=${name}`" element={<TypeEdit />} /> */}
+            {/* `users?page=${currentPage}&count=${pageSize}` */}
             <Route path="/friends" element={<FriendsContainer />} />
             {/*<Route path="*" element={<NotFound />} />*/}
             <Route path="*" element={() => <div>404 NOT FOUND</div>} />

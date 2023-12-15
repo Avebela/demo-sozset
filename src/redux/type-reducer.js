@@ -4,6 +4,7 @@ import { typeAPI } from "../api/api";
 const SET_TYPE = "SET_TYPE";
 const SET_TYPE_INSERT = "SET_TYPE_INSERT";
 const SET_TYPE_UPDATE = "SET_TYPE_UPDATE";
+const SET_TYPE_ONE = "SET_TYPE_ONE";
 
 let initialState = {
   // typeNew: [1, 2, 3],
@@ -27,6 +28,12 @@ const typeReducer = (state = initialState, action) => {
         /// type: [...state.typeNew, ...action.typeNew],
         // types: [...state.type, ...action.types],
         /// users: [...state.users, ...action.users]
+      };
+    }
+    case SET_TYPE_ONE: {
+      return {
+        ...state,
+        types: action.types,
       };
     }
     case SET_TYPE_INSERT: {
@@ -55,6 +62,11 @@ export const setType = (type) => ({
   types: type,
 });
 
+export const setTypeOne = (type) => ({
+  type: SET_TYPE_ONE,
+  types: type,
+});
+
 export const setTypeInsert = (type) => ({
   type: SET_TYPE_INSERT,
   typeNew: type,
@@ -70,6 +82,14 @@ export const getType = () => {
     const data = await typeAPI.getType();
 
     dispatch(setType(data));
+  };
+};
+
+export const getTypeOne = () => {
+  return async (dispatch) => {
+    const data = await typeAPI.getTypeOne();
+
+    dispatch(setTypeOne(data));
   };
 };
 

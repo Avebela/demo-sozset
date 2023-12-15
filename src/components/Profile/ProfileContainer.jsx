@@ -24,7 +24,7 @@ function ProfileContainer(props) {
       //  userId = props.router.navigate("/login");
     }
   }
-
+  //console.log("userId=" + userId);
   useEffect(() => {
     props.getUserProfile(userId);
     props.getStatus(userId);

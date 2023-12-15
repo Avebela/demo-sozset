@@ -74,6 +74,9 @@ export const typeAPI = {
         })
     );
   },
+  getTapeOne(type) {
+    return instance2.post(`type`, type);
+  },
   typeInsert(type) {
     return instance2.post(`type`, type);
   },

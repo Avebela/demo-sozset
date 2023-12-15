@@ -4,30 +4,31 @@ import TypeDataForm from "./TypeDataForm";
 import TypeData from "./TypeData";
 
 const Type = (props) => {
-  let [insertMode, setInsertMode] = useState(false);
+  let [mode, setMode] = useState(false);
 
   const onSubmit = (formData) => {
     console.log(formData);
+
     props.insertType(formData).then(() => {
-      setInsertMode(false);
+      setMode(false);
     });
 
     // props.updateType(formData).then(() => {
-    //   setEditMode(false);
+    //   setMode(false);
 
     // });
   };
 
   return (
     <div className={s.descriptionBlock}>
-      {insertMode ? (
+      {mode ? (
         <TypeDataForm onSubmit={onSubmit} />
       ) : (
         <TypeData
           type={props.type}
           updateType={props.updateType}
           goToInsertMode={() => {
-            setInsertMode(true);
+            setMode(true);
           }}
         />
       )}
